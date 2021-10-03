@@ -1,4 +1,4 @@
-import React, { FormEvent, FormEventHandler, useRef } from 'react';
+import React, { useRef } from 'react';
 
 // import useHistory here.
 
