@@ -1,15 +1,17 @@
-import React, { useRef } from 'react';
+import React, { FormEvent, FormEventHandler, useRef } from 'react';
 
 // import useHistory here.
 
 const Search = () => {
-
   // get the history object here
 
-  const searchInputRef = useRef();
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
-  const onSearchHandler = (e) => {
+  const onSearchHandler = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!searchInputRef.current)
+      throw new Error('search Input ref is not assigned');
 
     const searchQuery = new URLSearchParams({
       name: searchInputRef.current.value
