@@ -1,7 +1,27 @@
 import React from 'react';
 
-const Hero = ({ image, displayText }) => {
-  const type = ''
+const getHeroTitle = (type: string) => {
+  switch (type) {
+    case 'dog':
+      return 'Dogs';
+    case 'cat':
+      return 'Cats';
+    case 'rabbit':
+      return 'Rabbits';
+    case 'bird':
+      return 'Birds';
+    default:
+      return 'Find your perfect pet';
+  }
+};
+
+type HeroProps = {
+  image: string;
+  displayText: string;
+};
+
+const Hero = ({ image, displayText }: HeroProps): JSX.Element => {
+  const type: string = '';
 
   return (
     <div
@@ -22,18 +42,3 @@ const Hero = ({ image, displayText }) => {
 };
 
 export default Hero;
-
-const getHeroTitle = (type) => {
-  switch (type) {
-    case 'dog':
-      return 'Dogs';
-    case 'cat':
-      return 'Cats';
-    case 'rabbit':
-      return 'Rabbits';
-    case 'bird':
-      return 'Birds';
-    default:
-      return 'Find your perfect pet';
-  }
-};

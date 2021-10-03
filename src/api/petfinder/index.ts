@@ -11,7 +11,7 @@ export const getPets = async (type = '', query = '') => {
   return json;
 };
 
-export const getPetDetails = async (id) => {
+export const getPetDetails = async (id: string) => {
   const requestUrl = `/animals/${id}`;
   const response = await fetch(requestUrl, {
     method: 'GET'
