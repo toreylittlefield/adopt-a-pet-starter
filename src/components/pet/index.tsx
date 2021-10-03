@@ -1,6 +1,30 @@
 import React from 'react';
 
-const Pet = ({ animal }) => {
+type AnimalType = {
+  animal: {
+    id: string;
+    type: string;
+    photos: Photos[];
+    name: string;
+    breeds: Breeds;
+    colors: Colors;
+    gender: string;
+  };
+};
+
+type Photos = {
+  medium: string;
+};
+
+type Breeds = {
+  primary: string;
+};
+
+type Colors = {
+  primary: string;
+};
+
+const Pet = ({ animal }: AnimalType) => {
   return (
     <a
       key={animal.id}
