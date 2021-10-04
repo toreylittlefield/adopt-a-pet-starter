@@ -22,13 +22,24 @@ export const getPetDetails = async (id: string) => {
   return json;
 };
 
+export type PetTypeObj = {
+  name: string;
+  coats: string[];
+  colors: string[];
+  genders: ['Male', 'Female'];
+  _links: {
+    self: { href: string };
+    breeds: { href: string };
+  };
+};
+
+export type PetTypesApi = { types: PetTypeObj[] };
 export const getPetTypes = async () => {
   const requestUrl = `/types`;
   const response = await fetch(requestUrl, {
     method: 'GET'
   });
 
-  const json = await response.json();
-
+  const json: PetTypesApi = await response.json();
   return json;
 };

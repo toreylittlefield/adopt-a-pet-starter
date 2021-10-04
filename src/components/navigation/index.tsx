@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { getPetTypes } from '../../api/petfinder';
+import { getPetTypes, PetTypeObj } from '../../api/petfinder';
 import Logo from '../../assets/logo.svg';
 import Search from '../search';
 
 const Navigation = () => {
-  const [petTypes, setPetTypes] = useState([]);
+  const [petTypes, setPetTypes] = useState<PetTypeObj[]>([]);
 
   useEffect(() => {
     async function getPetTypesData() {
@@ -24,10 +24,7 @@ const Navigation = () => {
       <ul className="nav-links">
         <li key="all">
           {/* This link should have an activeClassName and exact prop */}
-          <a
-            href="/"
-            className="nav-link"
-          >
+          <a href="/" className="nav-link">
             All Pets
           </a>
         </li>

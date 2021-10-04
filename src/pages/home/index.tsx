@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { getPets } from '../../api/petfinder';
 import Hero from '../../components/hero';
 import Pet from '../../components/pet';
+import { Animals } from '../../mocks/handlers';
 
 const HomePage = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<Animals | null>(null);
   const type = ''; // Fix me!
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const HomePage = () => {
 
   return (
     <div className="page">
-      <Hero />
+      <Hero displayText="" image="" />
       <h3>
         <span className="pet-type-label">{type ? `${type}s` : 'Pets'}</span>{' '}
         available for adoption near you
@@ -41,10 +42,7 @@ const HomePage = () => {
                   {
                     <img
                       className="pet-image"
-                      src={
-                        animal.photos[0]?.medium ||
-                        '/missing-animal.png'
-                      }
+                      src={animal.photos[0]?.medium || '/missing-animal.png'}
                       alt=""
                     />
                   }

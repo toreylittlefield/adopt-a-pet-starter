@@ -76,7 +76,21 @@ type Details = {
   };
 };
 
-export type Animals = Details;
+export type Animals = Details[];
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type AnimalsApi = {
+  animals: Animals;
+  pagination: {
+    count_per_page: number;
+    total_count: number;
+    current_page: number;
+    total_pages: number;
+    _links: {
+      next: { href: string };
+    };
+  };
+};
 
 export const handlers = [
   rest.get('/types', (_req, res, ctx) => {
