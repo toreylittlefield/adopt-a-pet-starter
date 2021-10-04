@@ -1,30 +1,9 @@
 import React from 'react';
+import { Details } from '../../mocks/handlers';
 
-type AnimalType = {
-  animal: {
-    id: string;
-    type: string;
-    photos: Photos[];
-    name: string;
-    breeds: Breeds;
-    colors: Colors;
-    gender: string;
-  };
-};
+type PetProps = { animal: Details };
 
-type Photos = {
-  medium: string;
-};
-
-type Breeds = {
-  primary: string;
-};
-
-type Colors = {
-  primary: string;
-};
-
-const Pet = ({ animal }: AnimalType) => {
+const Pet = ({ animal }: PetProps) => {
   return (
     <a
       key={animal.id}

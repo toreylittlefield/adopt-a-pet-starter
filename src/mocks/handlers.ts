@@ -12,7 +12,7 @@ type Photos = {
   full: string;
 };
 
-type Details = {
+export type Details = {
   id: number;
   organization_id: string;
   url: string;

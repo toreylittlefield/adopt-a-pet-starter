@@ -2,19 +2,19 @@ import React, { useState, useEffect, useMemo } from 'react';
 import Hero from '../../components/hero';
 import { getPets } from '../../api/petfinder';
 import Pet from '../../components/pet';
+import { Animals } from '../../mocks/handlers';
 
 // import useLocation here
 
 const SearchPage = () => {
-
   // Get the search value from useLocation() here
   const search = 'REPLACE ME';
 
-  const queryParams = useMemo(() => { 
+  const queryParams = useMemo(() => {
     return new URLSearchParams('REPLACE ME');
   }, [search]);
 
-  const [pets, setPets] = useState([]);
+  const [pets, setPets] = useState<Animals>([]);
 
   useEffect(() => {
     async function getPetsData() {
@@ -29,7 +29,7 @@ const SearchPage = () => {
 
   return (
     <div className="page">
-      <Hero displayText={`Results for ${queryParams.get('name')}`} />
+      <Hero displayText={`Results for ${queryParams.get('name')}`} image="" />
 
       <h3>Pets available for adoption near you</h3>
 
