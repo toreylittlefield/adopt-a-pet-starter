@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { getPetDetails } from '../../api/petfinder';
 import Hero from '../../components/hero';
-import { Animals } from '../../mocks/handlers';
+import { Details } from '../../mocks/handlers';
 
 const PetDetailsPage = () => {
-  const [data, setData] = useState<Animals>();
+  const [data, setData] = useState<Details>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const id = '51322435'; // <--- Update me!
