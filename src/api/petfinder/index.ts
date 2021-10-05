@@ -7,7 +7,6 @@ export const getPets = async (type = '', query = '') => {
   });
 
   const json = await response.json();
-
   return json;
 };
 
