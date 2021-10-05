@@ -32,7 +32,7 @@ export type Details = {
   age: string;
   gender: string;
   size: string;
-  coat: string;
+  coat: string | null;
   attributes: {
     spayed_neutered: boolean;
     house_trained: boolean;
@@ -40,10 +40,14 @@ export type Details = {
     special_needs: boolean;
     shots_current: boolean;
   };
-  environment: { children: null | boolean; dogs: boolean; cats: boolean };
+  environment: {
+    children: null | boolean;
+    dogs: boolean | null;
+    cats: boolean | null;
+  };
   tags: string[];
   name: string;
-  description: string;
+  description: string | null;
   organization_animal_id: string | null;
   photos: Photos[];
   primary_photo_cropped: {
@@ -52,14 +56,14 @@ export type Details = {
     large: string;
     full: string;
   };
-  videos: string[];
+  videos: { embed: string }[] | null;
   status: string;
   status_changed_at: string;
   published_at: string;
   distance: number | null;
   contact: {
     email: string;
-    phone: string;
+    phone: string | null;
     address: {
       address1: string | null;
       address2: string | null;
@@ -92,6 +96,10 @@ type AnimalsApi = {
   };
 };
 
+type Params = {
+  id: string;
+};
+
 export const handlers = [
   rest.get('/types', (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(types));
@@ -118,11 +126,12 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(response));
   }),
   rest.get('/animals/:id', (req, res, ctx) => {
-    let { id } = req.params;
-    if (typeof id !== 'number') {
+    const id: keyof typeof details | undefined = req.params.id;
+    if (typeof id !== 'string' || id === undefined) {
       return res(ctx.status(400, 'Bad Id'));
     }
-    let response: Details | undefined = details[51322382];
+
+    let response: Details | undefined = details[id];
 
     if (!response === undefined) {
       return res(ctx.status(404));
