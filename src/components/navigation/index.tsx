@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { getPetTypes, PetTypeObj } from '../../api/petfinder';
 import Logo from '../../assets/logo.svg';
 import Search from '../search';
@@ -24,21 +25,21 @@ const Navigation = () => {
       <ul className="nav-links">
         <li key="all">
           {/* This link should have an activeClassName and exact prop */}
-          <a href="/" className="nav-link">
+          <NavLink to="/" className="nav-link">
             All Pets
-          </a>
+          </NavLink>
         </li>
         {petTypes
           ? petTypes.map((type) => (
               <li key={type.name}>
                 {/* These links should have an activeClassName prop */}
-                <a
-                  href={`/${type._links.self.href.split('/').pop()}`}
+                <NavLink
+                  to={`/${type._links.self.href.split('/').pop()}`}
                   key={type.name}
                   className="nav-link"
                 >
                   {type.name}s
-                </a>{' '}
+                </NavLink>{' '}
               </li>
             ))
           : 'Loading...'}

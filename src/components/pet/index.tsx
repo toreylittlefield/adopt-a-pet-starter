@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Details } from '../../mocks/handlers';
 
 type PetProps = { animal: Details };
 
 const Pet = ({ animal }: PetProps) => {
   return (
-    <a
+    <Link
       key={animal.id}
-      href={`/${animal.type.toLowerCase()}/${animal.id}`}
+      to={`/${animal.type.toLowerCase()}/${animal.id}`}
       className="pet"
     >
       <article>
@@ -27,7 +28,7 @@ const Pet = ({ animal }: PetProps) => {
         <p>Color: {animal.colors.primary}</p>
         <p>Gender: {animal.gender}</p>
       </article>
-    </a>
+    </Link>
   );
 };
 
