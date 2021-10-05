@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { getPetDetails } from '../../api/petfinder';
 import Hero from '../../components/hero';
+import { useParams } from 'react-router-dom';
 import { Details } from '../../mocks/handlers';
 
+type Params = {
+  id: string;
+};
+
 const PetDetailsPage = () => {
-  const [data, setData] = useState<Details>();
+  const { id } = useParams<Params>();
+  const [data, setData] = useState<Details | null>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const id = '51322435'; // <--- Update me!
 
   useEffect(() => {
     async function getPetsData() {
