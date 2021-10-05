@@ -3,6 +3,7 @@ import { getPetDetails } from '../../api/petfinder';
 import Hero from '../../components/hero';
 import { useParams } from 'react-router-dom';
 import { Details } from '../../mocks/handlers';
+import { Redirect } from 'react-router-dom';
 
 type Params = {
   id: string;
@@ -35,7 +36,7 @@ const PetDetailsPage = () => {
         <h3>Loading...</h3>
       ) : error ? (
         <div>
-          {/* Redirect to /pet-details-not-found if there was an error! */}
+          <Redirect to="/pet-details-not-found" />
         </div>
       ) : (
         <main>
