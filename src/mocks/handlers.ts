@@ -96,10 +96,6 @@ type AnimalsApi = {
   };
 };
 
-type Params = {
-  id: string;
-};
-
 export const handlers = [
   rest.get('/types', (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(types));
