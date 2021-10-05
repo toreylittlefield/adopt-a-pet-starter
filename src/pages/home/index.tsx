@@ -3,10 +3,15 @@ import { getPets } from '../../api/petfinder';
 import Hero from '../../components/hero';
 import Pet from '../../components/pet';
 import { Animals } from '../../mocks/handlers';
+import { useParams } from 'react-router-dom';
+
+type Params = {
+  type: string;
+};
 
 const HomePage = () => {
-  const [data, setData] = useState<Animals | null>(null);
-  const type = ''; // Fix me!
+  const { type } = useParams<Params>();
+  const [data, setData] = useState<Animals>();
 
   useEffect(() => {
     async function getPetsData() {
